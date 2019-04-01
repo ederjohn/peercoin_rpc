@@ -238,6 +238,10 @@ class Client:
         '''signrawtransaction with privkey, returns status and rawtxhash'''
         return self.req("signrawtransaction", [rawtxhash])
 
+    def signrawtransactionWithArgs(self, rawtxhash, parent_tx_outputs, private_key):
+        '''signrawtransaction with privkey and arguments (parent tx outputs and private key) returns status and rawtxhash'''
+        return self.req("signrawtransaction", [rawtxhash,parent_tx_outputs,private_key])
+
     def sendrawtransaction(self, signed_rawtxhash):
         '''sends raw transaction, returns txid'''
         return self.req("sendrawtransaction", [signed_rawtxhash])
